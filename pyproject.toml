@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inspection-robot-gate-review"
+version = "1.0.0"
+description = "Оценка инспекционного MVP робота для объекта НГК на стадийных воротах Go/No-Go: симулятор на Python, записи испытаний, шаблон протокола, домашнее задание с переносом на ROS 2"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.23", "matplotlib>=3.6", "pytest>=7"]
+
+[tool.setuptools]
+packages = ["ngk_sim", "student", "variants", "variants.a_fast", "variants.b_careful", "variants.c_balanced", "variants.d_shortcut"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
