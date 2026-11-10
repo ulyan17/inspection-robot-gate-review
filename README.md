@@ -1,286 +1,290 @@
-# Инспекционный MVP робота для объекта НГК: оценка на стадийных воротах Go/No-Go
+# Inspection Robot MVP for an Oil and Gas Facility: Stage-Gate Go/No-Go Review
 
-Практическое задание. Команда работает как комиссия на стадийных воротах В4: по записям испытаний оценивает четырёх подрядчиков, которые предложили робота-инспектора для насосной станции, и решает, кого допустить к пилоту на реальном объекте.
+A hands-on assignment. Your team acts as the review committee at stage gate 4 (В4). Four vendors have proposed an inspection robot for a pumping station. Using recorded test runs, you assess each vendor and decide which one, if any, may proceed to a pilot at a real facility.
 
-Устанавливать и запускать ничего не нужно. Нужны браузер и Word (или Google Документы).
+Nothing needs to be installed or run. You need a web browser and Word (or Google Docs).
+
+The test materials and the protocol template are in Russian. Russian labels are quoted below exactly as they appear, with an English translation in parentheses.
 
 <table>
 <tr>
-<td width="25%"><a href="evidence/A/README.md"><img src="docs/img/vendor-A.gif" alt="Подрядчик А"></a><br><b>А «Быстрый обход»</b></td>
-<td width="25%"><a href="evidence/B/README.md"><img src="docs/img/vendor-B.gif" alt="Подрядчик Б"></a><br><b>Б «Надёжный»</b></td>
-<td width="25%"><a href="evidence/C/README.md"><img src="docs/img/vendor-C.gif" alt="Подрядчик В"></a><br><b>В «Сбалансированный»</b></td>
-<td width="25%"><a href="evidence/D/README.md"><img src="docs/img/vendor-D.gif" alt="Подрядчик Г"></a><br><b>Г «Оптимальный маршрут»</b></td>
+<td width="25%"><a href="evidence/A/README.md"><img src="docs/img/vendor-A.gif" alt="Vendor A"></a><br><b>A «Быстрый обход» (Fast Sweep)</b></td>
+<td width="25%"><a href="evidence/B/README.md"><img src="docs/img/vendor-B.gif" alt="Vendor B"></a><br><b>B «Надёжный» (Reliable)</b></td>
+<td width="25%"><a href="evidence/C/README.md"><img src="docs/img/vendor-C.gif" alt="Vendor C"></a><br><b>C «Сбалансированный» (Balanced)</b></td>
+<td width="25%"><a href="evidence/D/README.md"><img src="docs/img/vendor-D.gif" alt="Vendor D"></a><br><b>D «Оптимальный маршрут» (Optimal Route)</b></td>
 </tr>
 </table>
 
+In the Russian materials the vendors are labelled А, Б, В, Г. They correspond to A, B, C, D here and to the folders `evidence/A … D`.
+
 ---
 
-## Задание
+## Assignment
 
-### Что нужно сделать
+### What to do
 
-1. Скачать шаблон протокола: **[gate_protocol.docx](https://github.com/ulyan17/inspection-robot-gate-review/raw/main/submission/gate_protocol.docx)**.
-2. Заполнить его по материалам испытаний, которые лежат в этом репозитории (ссылки ниже).
-3. Сдать заполненный файл преподавателю.
-4. Защитить решение комиссии за 2 минуты.
+1. Download the protocol template: **[gate_protocol.docx](https://github.com/ulyan17/inspection-robot-gate-review/raw/main/submission/gate_protocol.docx)**.
+2. Fill it in using the test materials in this repository (links below).
+3. Submit the completed file to the instructor.
+4. Defend the committee's decision in 2 minutes.
 
-Время на заполнение — 42 минуты. Работа идёт в командах по 3–4 человека.
+Time for filling in the protocol: 42 minutes. Teams of 3–4 people.
 
-### Где лежат материалы
+### Where the materials are
 
-| Что | Где | Что там |
+| Item | Location | Contents |
 |---|---|---|
-| Шаблон протокола | [submission/gate_protocol.docx](https://github.com/ulyan17/inspection-robot-gate-review/raw/main/submission/gate_protocol.docx) | 7 страниц, которые нужно заполнить |
-| Заявления подрядчиков | [variants/VENDORS.md](variants/VENDORS.md) | что обещает каждый подрядчик |
-| Материалы подрядчика А | [evidence/A/README.md](evidence/A/README.md) | анимация, карты, лог, отчёт, замеры, код |
-| Материалы подрядчика Б | [evidence/B/README.md](evidence/B/README.md) | то же |
-| Материалы подрядчика В | [evidence/C/README.md](evidence/C/README.md) | то же |
-| Материалы подрядчика Г | [evidence/D/README.md](evidence/D/README.md) | то же |
-| Сводка по 5 сценариям | [evidence/compare.md](evidence/compare.md) | все подрядчики на 5 одинаковых сценариях приёмки |
-| Сводка по 30 сценариям | [evidence/compare_30.md](evidence/compare_30.md) | все подрядчики на 30 случайных сценариях |
-| Паспорта точек, блик и перегрев | [evidence/README.md](evidence/README.md) | норма давления и предел температуры точек K1–K6 |
-| Критерии ворот | [раздел «Критерии ворот»](#критерии-ворот) и [configs/gate_thresholds.json](configs/gate_thresholds.json) | пороги, по которым принимается решение |
+| Protocol template | [submission/gate_protocol.docx](https://github.com/ulyan17/inspection-robot-gate-review/raw/main/submission/gate_protocol.docx) | the 7 pages you fill in |
+| Vendor claims | [variants/VENDORS.md](variants/VENDORS.md) | what each vendor promises |
+| Vendor A materials | [evidence/A/README.md](evidence/A/README.md) | animation, maps, log, report, sensor readings, code |
+| Vendor B materials | [evidence/B/README.md](evidence/B/README.md) | same |
+| Vendor C materials | [evidence/C/README.md](evidence/C/README.md) | same |
+| Vendor D materials | [evidence/D/README.md](evidence/D/README.md) | same |
+| Summary, 5 scenarios | [evidence/compare.md](evidence/compare.md) | all vendors on the same 5 acceptance scenarios |
+| Summary, 30 scenarios | [evidence/compare_30.md](evidence/compare_30.md) | all vendors on 30 random scenarios |
+| Checkpoint specs, glare vs overheating | [evidence/README.md](evidence/README.md) | pressure range and temperature limit for checkpoints K1–K6 |
+| Gate criteria | [Gate criteria](#gate-criteria) section and [configs/gate_thresholds.json](configs/gate_thresholds.json) | thresholds used for the decision |
 
-### Как устроена страница подрядчика
+### How a vendor page is organised
 
-Каждая страница `evidence/A … D` состоит из одинаковых разделов:
+Every page `evidence/A … D` has the same sections:
 
-| Раздел | Что в нём |
+| Section | Contents |
 |---|---|
-| Заявление | что обещает подрядчик |
-| 1. Демо-прогон (seed 19) | анимация и итоговая карта одного прогона |
-| 2. Приёмка: 5 сценариев | карты сценариев seed 101, 102, 103, 104, 105 |
-| 3. Код подрядчика | файл с настройками робота |
+| «Заявление подрядчика» (vendor claim) | what the vendor promises |
+| «1. Демо-прогон (seed 19)» (demo run) | animation and final map of one run |
+| «2. Приёмка: 5 сценариев» (acceptance, 5 scenarios) | maps for scenarios seed 101, 102, 103, 104, 105 |
+| «3. Код подрядчика» (vendor code) | the file with the robot's settings |
 
-Под каждой картой есть три блока. Они раскрываются щелчком по заголовку:
+Under each map there are three collapsible blocks. Click a block title to expand it:
 
-| Блок | Что в нём |
+| Block | Contents |
 |---|---|
-| Лог миссии и итог | сообщения робота по ходу миссии, итог по критериям ворот, строка «Истина этого seed» — где на самом деле была аномалия |
-| Отчёт подрядчика | что робот доложил: строка «Покрытие: N/6, аномалий: N, тревог: N», таблица по точкам, список тревог |
-| Замеры датчиков | каждый кадр: давление, норма давления, максимум температуры, число пикселей выше предела. Пометки «вне нормы» и «выше предела» показывают отклонения |
+| «Лог миссии и итог» (mission log and summary) | the robot's messages during the mission, the result for each gate criterion, and the line «Истина этого seed» (ground truth) showing where the anomaly actually was |
+| «Отчёт подрядчика» (vendor report) | what the robot reported: the line «Покрытие: N/6, аномалий: N, тревог: N» (coverage, anomalies, alarms), a table by checkpoint, a list of alarms («Тревоги») |
+| «Замеры датчиков» (sensor readings) | every frame: pressure, normal pressure range, maximum temperature, number of pixels above the limit. The marks «вне нормы» (out of range) and «выше предела» (above limit) flag deviations |
 
-Цвет точек на картах и анимации: зелёный — норма, оранжевый — тревога, серый — точка не проверена. Красные отметки на маршруте — шаги внутри Ex-зоны.
+Checkpoint colours on maps and animations: green — normal, orange — alarm, grey — not inspected. Red marks on the route are steps inside the Ex zone.
 
 ---
 
-## Порядок выполнения
+## Procedure
 
-### Шаг 1. Подготовка — 2 минуты
+### Step 1. Preparation — 2 minutes
 
-1. Скачать [gate_protocol.docx](https://github.com/ulyan17/inspection-robot-gate-review/raw/main/submission/gate_protocol.docx) и открыть в Word или Google Документах.
-2. Распределить роли:
-   - докладчик — ведёт защиту;
-   - аналитик данных — работает с картами, логами, замерами и кодом;
-   - ответственный за протокол — заполняет шаблон.
-3. Заполнить **страницу 1**: команда, группа, дата, ФИО по ролям.
+1. Download [gate_protocol.docx](https://github.com/ulyan17/inspection-robot-gate-review/raw/main/submission/gate_protocol.docx) and open it in Word or Google Docs.
+2. Assign roles:
+   - presenter — gives the defence;
+   - data analyst — works with maps, logs, sensor readings and code;
+   - protocol owner — fills in the template.
+3. Fill in **page 1**: team, group, date, names by role.
 
-### Шаг 2. Демо-прогон — 9 минут
+### Step 2. Demo run — 9 minutes
 
-Открыть по очереди страницы [А](evidence/A/README.md), [Б](evidence/B/README.md), [В](evidence/C/README.md), [Г](evidence/D/README.md), раздел «1. Демо-прогон (seed 19)». Около 2 минут на подрядчика.
+Open the pages for [A](evidence/A/README.md), [B](evidence/B/README.md), [C](evidence/C/README.md), [D](evidence/D/README.md) in turn, section «1. Демо-прогон (seed 19)». About 2 minutes per vendor.
 
-Для каждого подрядчика:
+For each vendor:
 
-1. Прочитать заявление в начале страницы.
-2. Посмотреть анимацию: маршрут, цвет точек, отметки внутри Ex-зоны.
-3. Заполнить строку подрядчика в **таблице 1** (страница 2 шаблона):
+1. Read the claim at the top of the page.
+2. Watch the animation: route, checkpoint colours, marks inside the Ex zone.
+3. Fill in the vendor's row in **Table 1** (template page 2):
 
-| Графа таблицы 1 | Где взять |
+| Table 1 column | Source |
 |---|---|
-| Точек проверено из 6 | блок «Отчёт подрядчика», строка «Покрытие: N/6» |
-| Тревог всего | блок «Отчёт подрядчика», та же строка, «тревог: N» |
-| Тревога на точке аномалии (да/нет) | блок «Лог миссии и итог», строка «Истина этого seed: аномалия на K…»; сравнить с разделом «Тревоги» в отчёте |
-| Время миссии, с | блок «Лог миссии и итог», строка «Время миссии, с» |
-| Шагов в Ex-зоне | блок «Лог миссии и итог», строка «Нарушения Ex-зон, шагов» |
-| Ручных вмешательств | блок «Лог миссии и итог», строка «Ручные вмешательства» |
+| «Точек проверено из 6» (checkpoints inspected out of 6) | block «Отчёт подрядчика», line «Покрытие: N/6» |
+| «Тревог всего» (total alarms) | block «Отчёт подрядчика», same line, «тревог: N» |
+| «Тревога на точке аномалии (да/нет)» (alarm at the anomaly checkpoint, yes/no) | block «Лог миссии и итог», line «Истина этого seed: аномалия на K…»; compare with the alarm list in the report |
+| «Время миссии, с» (mission time, s) | block «Лог миссии и итог», line «Время миссии, с» |
+| «Шагов в Ex-зоне» (steps in the Ex zone) | block «Лог миссии и итог», line «Нарушения Ex-зон, шагов» |
+| «Ручных вмешательств» (manual interventions) | block «Лог миссии и итог», line «Ручные вмешательства» |
 
-4. Сравнить результат с заявлением и записать одно-два наблюдения в поле **«Измерения показали»** на странице этого подрядчика (страницы 3–6 шаблона).
+4. Compare the result with the claim and write one or two observations in the field **«Измерения показали»** (measurements showed) on that vendor's page (template pages 3–6).
 
-В конце шага заполнить под таблицей 1 поле **«Чьё заявление не подтвердилось уже на демо-прогоне и в чём»**.
+At the end of the step, fill in the field below Table 1: **«Чьё заявление не подтвердилось уже на демо-прогоне и в чём»** (whose claim was already refuted in the demo run, and how).
 
-### Шаг 3. Сводки по 5 и 30 сценариям — 8 минут
+### Step 3. Summaries for 5 and 30 scenarios — 8 minutes
 
-Открыть [evidence/compare.md](evidence/compare.md) и [evidence/compare_30.md](evidence/compare_30.md). Заполнить **таблицу 2** (страница 2 шаблона):
+Open [evidence/compare.md](evidence/compare.md) and [evidence/compare_30.md](evidence/compare_30.md). Fill in **Table 2** (template page 2):
 
-| Графа таблицы 2 | Где взять |
+| Table 2 column | Source |
 |---|---|
-| Все обязательные: 5 сценариев | `compare.md`, раздел 1, последняя строка «Все обязательные сразу» |
-| Все обязательные: 30 сценариев | `compare_30.md`, раздел 1, та же строка |
-| Проваленные обязательные критерии и доля прогонов (5 / 30) | раздел 1 обоих файлов: строки с типом «обяз.», где у подрядчика стоит ❌; записать название критерия и долю на 5 и на 30 сценариях |
-| Номера проваленных сценариев (seed 101–105) | `compare.md`, раздел 3 «По каждому сценарию», таблица подрядчика: строки с ❌ в последней графе «обязательные» |
+| «Все обязательные: 5 сценариев» (all mandatory criteria met, 5 scenarios) | `compare.md`, section 1, last row «Все обязательные сразу» |
+| «Все обязательные: 30 сценариев» (all mandatory criteria met, 30 scenarios) | `compare_30.md`, section 1, same row |
+| «Проваленные обязательные критерии и доля прогонов (5 / 30)» (failed mandatory criteria and share of runs) | section 1 of both files: rows of type «обяз.» (mandatory) where the vendor has ❌; write the criterion name and its share on 5 and on 30 scenarios |
+| «Номера проваленных сценариев (seed 101–105)» (failed scenario numbers) | `compare.md`, section 3 «По каждому сценарию» (per scenario), the vendor's table: rows with ❌ in the last column «обязательные» |
 
-Затем:
-1. Сравнить результаты на 5 и на 30 сценариях. Отметить подрядчика, у которого они заметно различаются.
-2. Дополнить поле **«Измерения показали»** у каждого подрядчика цифрами из таблицы 2.
+Then:
+1. Compare the results on 5 and on 30 scenarios. Note the vendor whose results differ noticeably.
+2. Add the numbers from Table 2 to each vendor's **«Измерения показали»** field.
 
-### Шаг 4. Анализ причин — 15 минут
+### Step 4. Root-cause analysis — 15 minutes
 
-Около 4 минут на подрядчика. Подрядчиков можно разделить между участниками команды.
+About 4 minutes per vendor. Vendors can be split among team members.
 
-Для каждого подрядчика на его странице:
+For each vendor, on its page:
 
-1. Выбрать проваленный сценарий из таблицы 2. Записать его номер в поле **«Проверенный сценарий»**.
-2. В разделе «2. Приёмка» открыть карту этого сценария: какие точки серые или оранжевые, есть ли отметки в Ex-зоне, где проходит маршрут.
-3. Раскрыть **«Лог миссии и итог»**: какие сообщения повторяются, какой критерий провален, где была аномалия на самом деле.
-4. Раскрыть **«Отчёт подрядчика»**: что робот доложил по каждой точке, совпадают ли тревоги с истиной.
-5. Раскрыть **«Замеры датчиков»** и проверить:
-   - сколько кадров снято на каждой точке;
-   - есть ли кадры с пометкой «кадр смазан» (нет показания манометра);
-   - какие значения давления помечены «вне нормы»;
-   - сколько пикселей «выше предела» и в скольких кадрах подряд. Один пиксель в одном кадре — блик. Пятно в нескольких кадрах — перегрев. Пример — в [evidence/README.md](evidence/README.md), раздел «Блик или перегрев».
-6. В разделе **«3. Код подрядчика»** найти настройки в начале файла: число замеров на точку, повторы недоступной точки, флаги. Определить, какая настройка объясняет то, что видно в данных.
-7. Заполнить на странице подрядчика:
-   - **«Причина»** — механизм провала одной-двумя фразами;
-   - **«Доказательство 1: данные»** — карта, лог или таблица замеров: источник, что в нём видно, вывод;
-   - **«Доказательство 2: код»** — какая настройка и как она объясняет результат.
+1. Pick a failed scenario from Table 2. Write its number in the field **«Проверенный сценарий»** (scenario examined).
+2. In section «2. Приёмка», open the map of that scenario: which checkpoints are grey or orange, whether there are marks in the Ex zone, where the route goes.
+3. Expand **«Лог миссии и итог»**: which messages repeat, which criterion failed, where the anomaly actually was.
+4. Expand **«Отчёт подрядчика»**: what the robot reported for each checkpoint, and whether the alarms match the ground truth.
+5. Expand **«Замеры датчиков»** and check:
+   - how many frames were taken at each checkpoint;
+   - whether any frames are marked «кадр смазан» (blurred frame, no gauge reading);
+   - which pressure values are marked «вне нормы» (out of range);
+   - how many pixels are «выше предела» (above limit) and in how many consecutive frames. One pixel in one frame is glare. A spot repeated across several frames is overheating. See the example in [evidence/README.md](evidence/README.md), section «Блик или перегрев» (glare or overheating).
+6. In section **«3. Код подрядчика»**, find the settings at the top of the file: number of readings per checkpoint, retries for an unreachable checkpoint, flags. Determine which setting explains what you see in the data.
+7. Fill in on the vendor's page:
+   - **«Причина»** (cause) — the failure mechanism in one or two sentences;
+   - **«Доказательство 1: данные»** (evidence 1: data) — map, log or sensor table: source, what it shows, conclusion;
+   - **«Доказательство 2: код»** (evidence 2: code) — which setting and how it explains the result.
 
-С чего начать проверку (это направления, а не ответы):
+Where to start looking (directions, not answers):
 
-| | Что проверить |
+| | What to check |
 |---|---|
-| А | состояние точки K2 на картах; сколько кадров снято на точку в таблице замеров; совпадают ли тревоги с истиной |
-| Б | сколько раз в логе встречается вызов оператора; из чего складывается время миссии |
-| В | какой из пяти сценариев провален; какие тревоги в нём ложные и из каких значений манометра они получены |
-| Г | участок маршрута рядом с Ex-зоной на картах; настройка в коде, которая влияет на маршрут |
+| A | the state of checkpoint K2 on the maps; how many frames are taken per checkpoint in the sensor table; whether alarms match the ground truth |
+| B | how many times the log mentions calling the operator; what makes up the mission time |
+| C | which of the five scenarios failed; which alarms in it are false and which gauge values they came from |
+| D | the part of the route next to the Ex zone on the maps; the code setting that affects the route |
 
-### Шаг 5. Решения — 8 минут
+### Step 5. Decisions — 8 minutes
 
-1. На странице каждого подрядчика отметить **одно** решение: GO, GO С УСЛОВИЯМИ, HOLD, RECYCLE или KILL. Как выбирать — в разделе [«Выбор решения»](#выбор-решения).
-2. Заполнить **«Что исправить»** — условие, при котором комиссия скажет GO.
-3. На **странице 7**:
-   - отметить кандидата на пилот или «НИКОГО»;
-   - написать обоснование и условия допуска: 3–5 предложений с цифрами из таблиц 1 и 2;
-   - заполнить таблицу двух главных рисков пилота на реальном объекте: риск, вероятность (Н/С/В), последствия, меры;
-   - написать, что изменить или добавить в [критерии ворот](#критерии-ворот) для реальной станции.
-4. Поле «Оценка преподавателя» не заполнять.
+1. On each vendor's page, mark **one** decision: GO, GO С УСЛОВИЯМИ (GO with conditions), HOLD, RECYCLE or KILL. See [Choosing a decision](#choosing-a-decision).
+2. Fill in **«Что исправить»** (what to fix) — the condition under which the committee would say GO.
+3. On **page 7**:
+   - mark the pilot candidate or «НИКОГО» (none);
+   - write the justification and admission conditions: 3–5 sentences with numbers from Tables 1 and 2;
+   - fill in the table of the two main pilot risks at a real facility: risk, likelihood (Н/С/В — low/medium/high), consequences, mitigation;
+   - write what you would change or add to the [gate criteria](#gate-criteria) for a real station.
+4. Leave «Оценка преподавателя» (instructor's assessment) blank.
 
-### Шаг 6. Проверка перед сдачей
+### Step 6. Check before submitting
 
-- [ ] страница 1 заполнена;
-- [ ] в таблице 1 четыре строки, все графы заполнены;
-- [ ] в таблице 2 четыре строки, указаны номера проваленных сценариев;
-- [ ] у каждого подрядчика заполнены все поля, отмечено ровно одно решение;
-- [ ] в каждом поле «Доказательство» указан источник: страница подрядчика, номер сценария, блок или строка кода;
-- [ ] на странице 7 отмечен один вариант, есть обоснование с цифрами, два риска и предложение по порогам.
+- [ ] page 1 is filled in;
+- [ ] Table 1 has four rows with all columns filled;
+- [ ] Table 2 has four rows, failed scenario numbers are listed;
+- [ ] every vendor page has all fields filled and exactly one decision marked;
+- [ ] every evidence field names its source: vendor page, scenario number, block or line of code;
+- [ ] page 7 has one option marked, a justification with numbers, two risks and a proposal on thresholds.
 
-### Как сдать
+### How to submit
 
-1. Сохранить файл как `Протокол_<команда>.docx`.
-2. Отправить преподавателю туда, куда он скажет.
+1. Save the file as `Протокол_<team>.docx`.
+2. Send it to the instructor as instructed.
 
-Отметить решение: заменить ☐ на ☒ или выделить вариант цветом. Если шаблон открыт в Google Документах, сдать в формате .docx или PDF.
+To mark a decision, replace ☐ with ☒ or highlight the option. If you work in Google Docs, submit as .docx or PDF.
 
 ---
 
-## Требования к ответам
+## Answer requirements
 
-### Измерения
+### Measurements
 
-Указываются числа. Пример для условного подрядчика Х, не входящего в четвёрку:
+State numbers. Example for a hypothetical vendor X, not one of the four:
 
-> Все обязательные критерии выполнены в 2 из 5 сценариев и в 40% из 30. Провален критерий времени миссии: 410–450 с при пороге 360 с.
+> All mandatory criteria met in 2 of 5 scenarios and in 40% of 30. Mission time criterion failed: 410–450 s against a 360 s threshold.
 
-### Доказательства
+### Evidence
 
-Формат: источник, что в нём видно, вывод.
+Format: source, what it shows, conclusion.
 
-| Корректно | Некорректно |
+| Acceptable | Not acceptable |
 |---|---|
-| «Материалы Х, карта seed 103: точка K4 серая. Робот не вернулся к недоступной точке.» | «Плохой алгоритм.» |
-| «Код Х: `PARK_AT_DOCK = True`. После каждой точки робот едет на зарядку.» | «Видимо, ошибка в коде.» |
-| «Замеры Х, seed 102: на K3 восемь кадров подряд. Робот застревает на одной точке.» | «Долго ехал.» |
+| "Vendor X materials, map seed 103: checkpoint K4 is grey. The robot did not return to the unreachable checkpoint." | "Bad algorithm." |
+| "Vendor X code: `PARK_AT_DOCK = True`. After every checkpoint the robot drives back to the charger." | "Probably a bug in the code." |
+| "Vendor X readings, seed 102: eight consecutive frames at K3. The robot gets stuck at one checkpoint." | "It was slow." |
 
-### Выбор решения
+### Choosing a decision
 
-| Решение | Когда применяется |
+| Decision | When it applies |
 |---|---|
-| GO | все обязательные критерии выполняются стабильно — на 5 и на 30 сценариях; существенных рисков нет |
-| GO С УСЛОВИЯМИ | редкий провал объяснён и закрывается условием пилота: ограничением зоны, дополнительной проверкой, сроком |
-| HOLD | данных недостаточно для решения или требуется внешнее условие |
-| RECYCLE | изъян найден и устраним; подрядчик дорабатывает MVP и повторно проходит ворота |
-| KILL | подход непригоден, изъян опасен или скрыт подрядчиком |
+| GO | all mandatory criteria are met consistently, on both 5 and 30 scenarios; no significant risks |
+| GO WITH CONDITIONS | a rare failure is explained and covered by a pilot condition: restricted zone, additional check, time limit |
+| HOLD | not enough data to decide, or an external condition is required |
+| RECYCLE | the defect is found and fixable; the vendor reworks the MVP and passes the gate again |
+| KILL | the approach is unsuitable, the defect is dangerous, or the vendor concealed it |
 
-Регулярное невыполнение обязательного критерия исключает GO. Оценивается обоснование, а не выбранный подрядчик: решение «никого не допускать» тоже допустимо.
+A mandatory criterion that fails regularly rules out GO. The justification is assessed, not the vendor chosen: "admit none" is also a valid decision.
 
-### Типичные ошибки
+### Common mistakes
 
-- оценка без чисел;
-- причина без указания источника;
-- решение по одному прогону без сравнения 5 и 30 сценариев;
-- GO при провале обязательного критерия без объяснения;
-- отмечено несколько решений или ни одного;
-- незаполненные поля.
+- assessment without numbers;
+- cause without a source;
+- decision based on a single run without comparing 5 and 30 scenarios;
+- GO despite a failed mandatory criterion, without explanation;
+- several decisions marked, or none;
+- empty fields.
 
 ---
 
-## Критерии ворот
+## Gate criteria
 
-KPI рассчитываются по эталонным данным симулятора, а не по отчёту подрядчика. Пороги — в [configs/gate_thresholds.json](configs/gate_thresholds.json).
+KPIs are computed from the simulator's ground truth, not from the vendor's report. Thresholds are in [configs/gate_thresholds.json](configs/gate_thresholds.json).
 
-| Критерий | Порог | Тип |
+| Criterion (as in the materials) | Threshold | Type |
 |---|---|---|
-| Нарушения Ex-зоны | 0 шагов | обязательный |
-| Покрытие точек контроля | не менее 90% | обязательный |
-| Аномалия найдена | да | обязательный |
-| Ложные тревоги | не более 1 за прогон | обязательный |
-| Ручные вмешательства | 0 | обязательный |
-| Сбой запуска | нет | обязательный |
-| Точность показаний | не менее 80% точек в пределах ±0,15 бар | желательный |
-| Время миссии | не более 360 с | желательный |
+| Ex zone violations («Нарушения Ex-зон») | 0 steps | mandatory |
+| Checkpoint coverage («Покрытие точек контроля») | at least 90% | mandatory |
+| Anomaly found («Аномалия найдена») | yes | mandatory |
+| False alarms («Ложные тревоги») | at most 1 per run | mandatory |
+| Manual interventions («Ручные вмешательства») | 0 | mandatory |
+| Run failure («Сбой запуска») | none | mandatory |
+| Reading accuracy («Точность показаний») | at least 80% of checkpoints within ±0.15 bar | desirable |
+| Mission time («Время миссии») | at most 360 s | desirable |
 
-## Объект испытаний
+## Test site
 
-Насосная станция 40 × 30 м.
+Pumping station, 40 × 30 m.
 
-<img src="docs/img/world.png" width="720" alt="Карта насосной станции: точки K1–K6, Ex-зона, техника на проезде">
+<img src="docs/img/world.png" width="720" alt="Pumping station map: checkpoints K1–K6, Ex zone, vehicle on the access road">
 
-| Элемент | Описание |
+| Element | Description |
 |---|---|
-| K1–K6 | точки контроля: манометр, тепловизор 8 × 8 пикселей, метка. Для каждой точки задан паспорт — норма давления и предел температуры |
-| Ex-зона (штриховка) | взрывоопасная зона вокруг дренажной ёмкости; въезд запрещён |
-| Техника (оранжевый прямоугольник) | в начале миссии может перекрыть тупик с точкой K2 |
-| DOCK | станция зарядки, старт и финиш |
-| Аномалия | одна на сценарий; место и тип зависят от номера сценария (seed) |
+| K1–K6 | checkpoints: pressure gauge, 8 × 8 pixel thermal camera, tag. Each checkpoint has a spec: normal pressure range and temperature limit |
+| Ex zone (hatched) | explosive atmosphere zone around the drain tank; entry is prohibited |
+| Vehicle (orange rectangle) | may block the dead end with checkpoint K2 at the start of the mission |
+| DOCK | charging station, start and finish |
+| Anomaly | one per scenario; its location and type depend on the scenario number (seed) |
 
-Датчики дают помехи: смазанные кадры без показания манометра, выбросы манометра, блики тепловизора.
+The sensors produce noise: blurred frames without a gauge reading, gauge outliers, thermal glare.
 
 ---
 
-## Оценивание
+## Grading
 
-| Блок | Баллы | Критерии |
+| Block | Points | Criteria |
 |---|---:|---|
-| Подготовка | 5 | заполнена страница 1 |
-| Измерения | 15 | таблицы 1 и 2 заполнены и соответствуют данным; цифры в «Измерения показали» |
-| Анализ причин | 30 | по 7,5 за подрядчика: верная причина (3), доказательство из данных (2,5), доказательство из кода (2) |
-| Решения | 15 | решения согласуются с измерениями (8), обоснован выбор кандидата (7) |
-| Риски и пороги | 10 | риски относятся к реальному объекту (5), предложение по порогам обосновано (5) |
-| Защита | 25 | решение опирается на цифры (10), ответ на вопрос комиссии (10), регламент 2 минуты (5) |
-| Итого | 100 | |
+| Preparation | 5 | page 1 filled in |
+| Measurements | 15 | Tables 1 and 2 filled in and consistent with the data; numbers in «Измерения показали» |
+| Root-cause analysis | 30 | 7.5 per vendor: correct cause (3), evidence from data (2.5), evidence from code (2) |
+| Decisions | 15 | decisions consistent with measurements (8), pilot choice justified (7) |
+| Risks and thresholds | 10 | risks relate to a real facility (5), threshold proposal justified (5) |
+| Defence | 25 | decision based on numbers (10), answer to the committee's question (10), within 2 minutes (5) |
+| Total | 100 | |
 
-## Защита
+## Defence
 
-2 минуты на команду:
+2 minutes per team:
 
-1. кандидат на пилот или отказ всем;
-2. на каких цифрах основано решение: 5 сценариев и 30;
-3. главная находка и её доказательство;
-4. главный риск пилота и меры.
+1. pilot candidate, or rejection of all;
+2. which numbers the decision is based on: 5 scenarios and 30;
+3. the main finding and its evidence;
+4. the main pilot risk and mitigation.
 
-После доклада — один вопрос комиссии.
+One question from the committee follows.
 
 ---
 
-## Домашнее задание
+## Homework
 
-Выполняется дома с установкой и запуском проекта: повторить занятие, доработать собственного робота в папке `student/` и перенести его на ROS 2. Руководство — [homework/README.md](homework/README.md).
+Done at home with the project installed and running: reproduce the session, improve your own robot in the `student/` folder and port it to ROS 2. Guide: [homework/README.md](homework/README.md).
 
-## Если что-то не работает
+## Troubleshooting
 
-| Проблема | Решение |
+| Problem | Solution |
 |---|---|
-| Шаблон не скачивается по ссылке | открыть [submission/gate_protocol.docx](submission/gate_protocol.docx) и нажать кнопку Download raw file справа |
-| Нет Word | Google Документы: Файл → Открыть → Загрузить |
-| Анимация не загружается | обновить страницу; итоговая карта расположена под анимацией |
-| Не раскрываются блоки | щёлкнуть по заголовку блока |
-| Не меняется ☐ на ☒ | выделить выбранный вариант цветом или полужирным |
+| The template link does not download | open [submission/gate_protocol.docx](submission/gate_protocol.docx) and click Download raw file on the right |
+| No Word | Google Docs: File → Open → Upload |
+| The animation does not load | reload the page; the final map is right below the animation |
+| Blocks do not expand | click the block title |
+| ☐ cannot be changed to ☒ | highlight the chosen option or make it bold |
